@@ -1,0 +1,22 @@
+pyflow-data-pipeline/
+│
+├── data/
+│ ├── raw/
+│ │ └── users_raw.csv
+│ ├── processed/
+│ ├── users_clean.csv
+│ └── users_rejected.csv
+│
+├── pipeline/
+│ ├── init.py
+│ ├── ingest.py # CSV ingestion
+│ ├── validate.py # Data validation
+│ ├── transform.py # Data transformation
+│ ├── load.py # Write output files
+│ └── logger.py # Logging setup
+│
+├── main.py # Pipeline orchestration
+├── config.py # Central configuration
+├── requirements.txt
+├── README.md
+└── .gitignore
