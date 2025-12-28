@@ -1,0 +1,160 @@
+PROJECT NAME
+------------
+PyFlow – Mini Data Pipeline using Pure Python
+
+
+PROJECT GOAL
+------------
+Build an end-to-end data pipeline using Python standard library only.
+The pipeline will read raw CSV data, validate it, transform it, and
+store clean and rejected records using a modular design.
+Collaboration will be done using Git & GitHub.
+
+
+FINAL PROJECT STRUCTURE (DO NOT CHANGE)
+--------------------------------------
+pyflow_data_pipeline/
+|
+|-- data/
+|   |-- raw/
+|   |   |-- users_raw.csv
+|   |-- processed/          (auto-created later, gitignored)
+|
+|-- pipeline/
+|   |-- __init__.py
+|   |-- ingest.py           (CSV ingestion)
+|   |-- validate.py         (business validation)
+|   |-- transform.py        (data cleaning)
+|   |-- load.py             (write output files)
+|   |-- logger.py           (logging)
+|
+|-- main.py                 (pipeline runner)
+|-- config.py               (paths & constants)
+|-- requirements.txt
+|-- README.md
+|-- .gitignore
+
+
+PIPELINE FLOW
+-------------
+CSV
+ -> Ingest (read CSV)
+ -> Validate (check rules)
+ -> Transform (clean data)
+ -> Load (write CSV)
+ -> Output
+
+
+COMMON DATA FORMAT
+------------------
+Each record will be handled as a dictionary:
+
+{
+  "user_id": "1",
+  "name": "Amit",
+  "age": "28",
+  "city": "Pune"
+}
+
+
+TASK ASSIGNMENT
+---------------
+Team Lead (Govind):
+- Own GitHub repository
+- Review and merge PRs
+- Implement main.py and config.py
+- Run end-to-end pipeline
+
+Member 1 – Ingestion Engineer (ingest.py):
+- Read CSV safely
+- Handle missing columns
+- Return list of dictionaries
+
+Function:
+def read_users(file_path: str) -> list[dict]
+
+
+Member 2 – Validation Engineer (validate.py):
+- Apply business rules
+- Return valid/invalid flag with error reason
+
+Business Rules:
+- user_id > 0
+- name not empty
+- age between 1 and 100
+- city not empty
+
+Function:
+def validate_user(row: dict) -> tuple[bool, str]
+
+
+Member 3 – Transformation Engineer (transform.py):
+- Strip extra spaces
+- Convert data types
+- Standardize city names (uppercase)
+
+Function:
+def transform_user(row: dict) -> dict
+
+
+Member 4 – Load Engineer (load.py):
+- Write clean records to CSV
+- Write rejected records to CSV
+- Handle empty data safely
+
+Function:
+def write_csv(file_path: str, data: list[dict]) -> None
+
+
+(Optional) Member 5 – Logging Engineer (logger.py):
+- Create reusable logger
+- Log pipeline steps and errors
+
+
+MAIN PIPELINE (main.py)
+----------------------
+- Read raw CSV
+- Loop through each row
+- Validate record
+- Transform valid records
+- Collect rejected records
+- Write output files
+
+Function:
+def run_pipeline():
+    pass
+
+
+GIT WORKFLOW RULES
+-----------------
+1. Never push directly to main branch
+2. Create feature branch:
+   git checkout -b feature/<module>
+3. Work only on assigned file
+4. Small commits with clear messages
+5. Raise Pull Request for review
+
+
+NEXT STEPS (IN ORDER)
+--------------------
+1. Lock project structure and commit
+2. Add function signatures (starter code)
+3. Assign tasks to team members
+4. Implement modules one by one
+5. Integrate everything in main.py
+6. Test end-to-end pipeline
+7. Clean code and add logging
+
+
+WHAT NOT TO COMMIT
+-----------------
+- data/processed/*
+- log files
+- __pycache__
+
+
+RESUME POINT
+------------
+Built an end-to-end data pipeline using pure Python with modular
+ingestion, validation, transformation, and loading layers,
+collaborating via GitHub and implementing data quality checks.
